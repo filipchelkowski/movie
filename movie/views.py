@@ -21,9 +21,9 @@ def movie_create(request):
             form.save()
             return redirect('movie_list')
         else:
-        form = MovieForm()
+            form = MovieForm()
 
-        return render(request, 'movies/movie_form.html', {'form': form})
+    return render(request, 'movies/movie_form.html', {'form': form})
 
 
 def movie_update(request, pk):
@@ -38,7 +38,7 @@ def movie_update(request, pk):
         else:
             form = MovieForm(instance=movie)
 
-            return render(request, 'movies/movie_form.html', {'form': form})
+    return render(request, 'movies/movie_form.html', {'form': form})
 
 
 def movie_delete(request, pk):
