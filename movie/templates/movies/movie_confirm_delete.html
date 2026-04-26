@@ -1,0 +1,14 @@
+{% extends 'movies/base.html' %}
+
+{% block content %}
+<div class="alert alert-danger">
+    <h4>Czy na pewno chcesz usunąć:</h4>
+    <strong>{{ movie.title }}</strong>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <button class="btn btn-danger">Tak, usuń</button>
+    <a href="{% url 'movie_detail' movie.pk %}" class="btn btn-secondary">Anuluj</a>
+</form>
+{% endblock %}

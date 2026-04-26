@@ -1,0 +1,37 @@
+{% extends 'movies/base.html' %}
+
+{% block content %}
+<h1>Dodaj / Edytuj film</h1>
+
+<form method="post" enctype="multipart/form-data" class="mt-4">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        {{ form.title.label_tag }} 
+        {{ form.title }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.description.label_tag }} 
+        {{ form.description }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.release_year.label_tag }} 
+        {{ form.release_year }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.rating.label_tag }} 
+        {{ form.rating }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.cover.label_tag }} 
+        {{ form.cover }}
+    </div>
+
+    <button type="submit" class="btn btn-success">Zapisz</button>
+    <a href="{% url 'movie_list' %}" class="btn btn-secondary">Anuluj</a>
+</form>
+{% endblock %}

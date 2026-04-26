@@ -1,0 +1,32 @@
+{% extends 'movies/base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Baza filmów</h1>
+
+<div class="row">
+    {% for movie in movies %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+
+                {% if movie.cover %}
+                    <img src="{{ movie.cover.url }}" class="card-img-top" style="height: 300px; object-fit: cover;">
+                {% endif %}
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text">{{ movie.description|truncatewords:15 }}</p>
+                </div>
+
+                <div class="card-footer d-flex justify-content-between">
+                    <a href="{% url 'movie_detail' movie.pk %}" class="btn btn-primary btn-sm">Zobacz</a>
+                    <a href="{% url 'movie_update' movie.pk %}" class="btn btn-warning btn-sm">Edytuj</a>
+                    <a href="{% url 'movie_delete' movie.pk %}" class="btn btn-danger btn-sm">Usuń</a>
+                </div>
+
+            </div>
+        </div>
+    {% empty %}
+        <p>Brak filmów</p>
+    {% endfor %}
+</div>
+{% endblock %}

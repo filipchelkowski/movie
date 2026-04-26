@@ -1,0 +1,24 @@
+{% extends 'movies/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        {% if movie.cover %}
+            <img src="{{ movie.cover.url }}" class="img-fluid rounded">
+        {% endif %}
+    </div>
+
+    <div class="col-md-8">
+        <h1>{{ movie.title }}</h1>
+        <p class="text-muted">Rok: {{ movie.release_year }}</p>
+
+        <p>{{ movie.description }}</p>
+
+        <p><strong>Ocena:</strong> {{ movie.rating }}</p>
+
+        <a href="{% url 'movie_update' movie.pk %}" class="btn btn-warning">Edytuj</a>
+        <a href="{% url 'movie_delete' movie.pk %}" class="btn btn-danger">Usuń</a>
+        <a href="{% url 'movie_list' %}" class="btn btn-secondary">Powrót</a>
+    </div>
+</div>
+{% endblock %}
